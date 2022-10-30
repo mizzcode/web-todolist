@@ -10,4 +10,5 @@ Sedikit gambaran mengenai app todolist via cli :
 
 
 untuk running sebenarnya cukup simpel, cukup ketikan perintah php app.php (kalau saya di terminal code editor 'Visual Studio Code').
+
 tapi jangan lupa menambahkan path php ke system environment variables jika belum.
