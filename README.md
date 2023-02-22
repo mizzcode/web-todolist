@@ -12,7 +12,7 @@ Sedikit gambaran mengenai app todolist via cli :
 memang tidak significant tapi sekarang sudah mengimplementasi sebuah paradigma object oriented yang saat ini banyak dan sering digunakan untuk pembuatan aplikasi.
 
 # Run App Todolist
-untuk running sebenarnya cukup simpel, cukup ketikan perintah php app.php (kalau saya di terminal code editor 'Visual Studio Code') atau jalankan di terminal manapun juga bisa.
+untuk running sebenarnya cukup simpel, cukup ketikan perintah ```php app.php``` (kalau saya di terminal code editor 'Visual Studio Code') atau jalankan di terminal manapun juga bisa.
 
 # Setting path php
 tapi jangan lupa menambahkan path php ke system environment variables jika belum.
