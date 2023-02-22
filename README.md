@@ -1,4 +1,4 @@
-# Aplikasi Todolist CLI
+# Aplikasi Todolist
 app todolist sederhana dan ini project pertama menggunakan php. 
 
 Sedikit gambaran mengenai app todolist via cli :
