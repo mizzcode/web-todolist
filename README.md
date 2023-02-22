@@ -1,5 +1,5 @@
 # Aplikasi Todolist CLI
-app todolist sederhana dan ini project pertama menggunakan php dan hanya bisa bekerja pada CLI / Terminal.
+app todolist sederhana dan ini project pertama menggunakan php. 
 
 Sedikit gambaran mengenai app todolist via cli :
 
