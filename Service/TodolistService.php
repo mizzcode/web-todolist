@@ -30,7 +30,7 @@ class TodolistServiceImpl implements TodolistService
         echo "=== TODOLIST ===" . PHP_EOL;
 
         foreach ($todolist as $number => $value) {
-            echo "$number. " . $value->getTodo() . PHP_EOL;
+            echo $value->getId() . ". " . $value->getTodo() . PHP_EOL;
         }
     }
 
