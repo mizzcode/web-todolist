@@ -16,7 +16,8 @@ memang tidak significant tapi sekarang sudah mengimplementasi sebuah paradigma o
 ## Installation
 
 1. Clone Repository `git clone https://github.com/mizzcode/apps-todolist.git`
-2. XAMPP : (https://www.apachefriends.org/download.html)
+2. XAMPP : https://www.apachefriends.org/download.html
+3. GIT : https://git-scm.com/downloads
 
 ## Run App Todolist
 
