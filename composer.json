@@ -1,0 +1,21 @@
+{
+    "name": "mizz/apps-todolist",
+    "description": "Aplikasi Todolist",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mizz\\AppsTodolist\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Misbahudin",
+            "email": "mizzc0d3@gmail.com"
+        }
+    ],
+    "require": {}
+}

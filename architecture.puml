@@ -1,0 +1,25 @@
+@startuml Todolist
+
+actor "User" as user
+
+node "App Todolist" {
+    node "Model" as model
+    node "View" as view
+    node "Controller" as controller
+    node "Service" as service
+    node "Repository" as repository
+    node "Domain" as domain
+    }
+
+    database "MySQL" as mysql
+
+    user --> controller :1
+    controller --> model :2
+    controller --> service :3
+    service --> repository :4
+    repository --> mysql :5
+    repository --> domain :6
+    controller --> view :7
+    view --> user :8
+
+@enduml

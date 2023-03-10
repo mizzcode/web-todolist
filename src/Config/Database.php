@@ -10,7 +10,7 @@ class Database
     {
         $host = "localhost";
         $port = 3306;
-        $database = "todolist";
+        $database = "php_todolist";
         $username = "root";
         $password = "";
 

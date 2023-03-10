@@ -6,14 +6,14 @@ require_once __DIR__ . "/../Service/TodolistService.php";
 require_once __DIR__ . "/../Helper/InputHelper.php";
 require_once __DIR__ . "/../View/TodolistView.php";
 
-
+use Config\Database;
 use Repository\TodolistRepositoryImpl;
 use Service\TodolistServiceImpl;
 use View\TodolistView;
 
 function testViewShowTodolist()
 {
-    $todolistRepository = new TodolistRepositoryImpl;
+    $todolistRepository = new TodolistRepositoryImpl(Database::getConnection());
     $todolistService = new TodolistServiceImpl($todolistRepository);
     $todolistView = new TodolistView($todolistService);
 
@@ -23,7 +23,7 @@ function testViewShowTodolist()
 
 function testViewAddTodolist()
 {
-    $todolistRepository = new TodolistRepositoryImpl;
+    $todolistRepository = new TodolistRepositoryImpl(Database::getConnection());
     $todolistService = new TodolistServiceImpl($todolistRepository);
     $todolistView = new TodolistView($todolistService);
 
@@ -35,7 +35,7 @@ function testViewAddTodolist()
 
 function testViewRemoveTodolist()
 {
-    $todolistRepository = new TodolistRepositoryImpl;
+    $todolistRepository = new TodolistRepositoryImpl(Database::getConnection());
     $todolistService = new TodolistServiceImpl($todolistRepository);
     $todolistView = new TodolistView($todolistService);
 
