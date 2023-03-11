@@ -1,9 +1,8 @@
 <?php
 
-namespace View;
+namespace Mizz\AppsTodolist\View;
 
-use Helper\InputHelper;
-use Service\TodolistService;
+use Mizz\AppsTodolist\Service\TodolistService;
 
 class TodolistView
 {

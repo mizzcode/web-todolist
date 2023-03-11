@@ -8,7 +8,7 @@ node "App Todolist" {
     node "Controller" as controller
     node "Service" as service
     node "Repository" as repository
-    node "Domain" as domain
+    node "Entity" as entity
     }
 
     database "MySQL" as mysql
@@ -18,7 +18,7 @@ node "App Todolist" {
     controller --> service :3
     service --> repository :4
     repository --> mysql :5
-    repository --> domain :6
+    repository --> entity :6
     controller --> view :7
     view --> user :8
 

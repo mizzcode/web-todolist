@@ -1,6 +1,6 @@
 <?php
 
-namespace Config;
+namespace Mizz\AppsTodolist\Config;
 
 use PDO;
 
@@ -10,7 +10,7 @@ class Database
     {
         $host = "localhost";
         $port = 3306;
-        $database = "php_todolist";
+        $database = "app_todolist";
         $username = "root";
         $password = "";
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Service;
+namespace Mizz\AppsTodolist\Service;
 
-use Entity\Todolist;
-use Repository\TodolistRepository;
+use Mizz\AppsTodolist\Entity\Todolist;
+use Mizz\AppsTodolist\Repository\TodolistRepository;
 
 interface TodolistService
 {

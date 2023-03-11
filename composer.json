@@ -17,5 +17,7 @@
             "email": "mizzc0d3@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php" : ">=8"
+    }
 }

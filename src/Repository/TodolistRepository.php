@@ -1,23 +1,13 @@
 <?php
 
-namespace Repository;
+namespace Mizz\AppsTodolist\Repository;
 
-use Entity\Todolist;
+use Mizz\AppsTodolist\Entity\Todolist;
 use PDO;
 
-interface TodolistRepository
+
+class TodolistRepository
 {
-    function save(Todolist $todolist);
-
-    function remove(int $number): bool;
-
-    function findAll(): array;
-}
-
-class TodolistRepositoryImpl implements TodolistRepository
-{
-    public array $todolist = [];
-
     private PDO $connection;
 
     public function __construct(PDO $connection)
@@ -27,15 +17,15 @@ class TodolistRepositoryImpl implements TodolistRepository
 
     function save(Todolist $todolist)
     {
-        $sql = "INSERT INTO todolist (todo) VALUES (?)";
+        $sql = "INSERT INTO todolist (todo, id_user) VALUES (?, ?)";
         $statement = $this->connection->prepare($sql);
 
-        $statement->execute([$todolist->getTodo()]);
+        $statement->execute([$todolist->todo, $todolist->id_user]);
     }
 
     function remove(int $number): bool
     {
-        $sql = "SELECT id FROM todolist WHERE id = ?";
+        $sql = "SELECT id_todo FROM todolist WHERE id_todo = ?";
         $statement = $this->connection->prepare($sql);
         $statement->execute([$number]);
 
@@ -51,20 +41,30 @@ class TodolistRepositoryImpl implements TodolistRepository
         }
     }
 
-    function findAll(): array
+    function findById(string $id_todo): ?Todolist
     {
-        $sql = "SELECT id, todo FROM todolist";
-        $statement = $this->connection->query($sql);
+        $sql = "SELECT id_todo, todo, id_user FROM todolist WHERE id_todo = ?";
+        $statement = $this->connection->prepare($sql);
+        $statement->execute([$id_todo]);
 
-        $result = [];
-
-        foreach ($statement as $row) {
-            $todolist = new Todolist();
-            $todolist->setId($row['id']);
-            $todolist->setTodo($row['todo']);
-
-            $result[] = $todolist;
+        try {
+            if ($row = $statement->fetch()) {
+                $todolist = new Todolist;
+                $todolist->id_todo = $row['id_todo'];
+                $todolist->todo = $row['todo'];
+                $todolist->id_user = $row['id_user'];
+                return $todolist;
+            } else {
+                return null;
+            }
+        } finally {
+            $statement->closeCursor();
         }
-        return $result;
+    }
+
+    function deleteAll()
+    {
+        $sql = "DELETE FROM todolist";
+        $this->connection->exec($sql);
     }
 }
