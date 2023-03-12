@@ -17,49 +17,41 @@ class TodolistRepository
 
     function save(Todolist $todolist)
     {
-        $sql = "INSERT INTO todolist (todo, id_user) VALUES (?, ?)";
+        $sql = "INSERT INTO todolist (todo) VALUES (?)";
         $statement = $this->connection->prepare($sql);
 
-        $statement->execute([$todolist->todo, $todolist->id_user]);
+        $statement->execute([$todolist->todo]);
     }
 
-    function remove(int $number): bool
+    function findById(string $id): ?Todolist
     {
-        $sql = "SELECT id_todo FROM todolist WHERE id_todo = ?";
+        $sql = "SELECT id, todo FROM todolist WHERE id = ?";
         $statement = $this->connection->prepare($sql);
-        $statement->execute([$number]);
+        $statement->execute([$id]);
 
-        if ($statement->fetch()) {
-            // kalau data nya ada 
-            $sql = "DELETE FROM todolist WHERE id = ?";
-            $statement = $this->connection->prepare($sql);
-            $statement->execute([$number]);
-            return true;
-        } else {
-            // kalau data gak ada return false
-            return false;
-        }
-    }
-
-    function findById(string $id_todo): ?Todolist
-    {
-        $sql = "SELECT id_todo, todo, id_user FROM todolist WHERE id_todo = ?";
-        $statement = $this->connection->prepare($sql);
-        $statement->execute([$id_todo]);
+        $result = [];
 
         try {
             if ($row = $statement->fetch()) {
-                $todolist = new Todolist;
-                $todolist->id_todo = $row['id_todo'];
-                $todolist->todo = $row['todo'];
-                $todolist->id_user = $row['id_user'];
-                return $todolist;
+                $result[] = [
+                    $todolist = new Todolist,
+                    $todolist->id = $row['id'],
+                    $todolist->todo = $row['todo']
+                ];
+                return $result;
             } else {
                 return null;
             }
         } finally {
             $statement->closeCursor();
         }
+    }
+
+    function deleteById(string $id)
+    {
+        $sql = "DELETE FROM todolist WHERE id = ?";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute([$id]);
     }
 
     function deleteAll()

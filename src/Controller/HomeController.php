@@ -9,7 +9,7 @@ class HomeController
     public function index()
     {
         View::render("Home/index", [
-            "title" => "Landing Page"
+            "title" => "App Todolist"
         ]);
     }
 }
